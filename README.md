@@ -5,7 +5,7 @@
 
 The analysis identifies prognostic gene signatures associated with sensitivity or resistance to specific chemotherapeutic agents (Paclitaxel, 5-Fluorouracil, Gemcitabine) by integrating multi-omic data with patient survival outcomes.
 
-The primary methods used include **Penalized Cox Regression** (Lasso/Ridge via `glmnet`) from high-dimensional data, multi-gene Cox models for pathway-level analysis, and Kaplan-Meier survival curves for visualization.
+The primary methods used include **Penalized Cox Regression** (Ridge via `glmnet`) from high-dimensional data, multi-gene Cox models for pathway-level analysis, and Kaplan-Meier survival curves for visualization.
 
 ## Table of Contents
 
@@ -26,9 +26,9 @@ The primary methods used include **Penalized Cox Regression** (Lasso/Ridge via `
     * **5-Fluorouracil (5-FU):** All applicable cohorts (STAD, PAAD, ESCA, READ) & STAD-only.
     * **Gemcitabine:** All applicable cohorts (PAAD, PCPG, LIHC, LUSC, SARC) & PAAD-only.
 * **Models:**
-    * **Model 1:** Penalized Cox model for CNA + Condition (Sensitive/Resistant).
-    * **Model 2:** Penalized Cox model for Mutation + Condition (Sensitive/Resistant).
-    * **Multi-Gene Models:** Pathway-based penalized Cox models.
+    * **Model 1 (CNA-based):** Penalized Cox model using **Expression (expr) + CNA + Condition** (Sensitive/Resistant) + **CNA:Condition Interaction**.
+    * **Model 2 (Mutation-based):** Penalized Cox model using **Expression (expr) + Mutation (mut) + Condition** (Sensitive/Resistant) + **Mutation:Condition Interaction**.
+    * **Multi-Gene Models:** Pathway-based penalized Cox models derived from the results of Model 1 and Model 2.
 
 ## Analysis Pipeline
 
@@ -45,7 +45,7 @@ Each notebook follows a consistent analytical workflow:
 
 The project is structured with notebooks located inside their respective data directories. Pre-computed models are saved to a `Results/` folder within each directory.
 
-**Note on Paths:** The notebooks source `functions.R` using an absolute path (`D:/MultiDrug/Surv-Codes/functions.R`). For this repository to be portable, you should change this in each notebook to a relative path, e.g.: `source('../../functions.R')`.
+**Note on Paths:** For this repository to be portable, you should change this in each notebook to a relative path, e.g.: `source('../../functions.R')`.
 
 ## Setup and Installation
 
