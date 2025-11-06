@@ -150,5 +150,3 @@ This repository also includes the following R scripts, which are not part of the
 * `graph_Results.R`
 
 These scripts contain various helper functions used specifically for generating more advanced and customized visualizations of the final model results (e.g., C-Index and Hazard Ratio bar plots).
-
-If you are interested in the specific plotting functions used to create the figures in the notebooks, feel free to explore these files.
