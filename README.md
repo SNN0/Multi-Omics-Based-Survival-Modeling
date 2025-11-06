@@ -141,3 +141,14 @@ This repository includes 6 main analysis notebooks, grouped by drug and cohort:
 ### Gemcitabine (DNA_REPi)
 * `Gem_All_Samples_Results.ipynb`: Analysis of Gemcitabine response across all 5 matched TCGA cohorts (PAAD, PCPG, LIHC, LUSC, SARC).
 * `PAAD_Samples_Results.ipynb`: A focused, deep-dive analysis on the PAAD cohort only.
+
+## Additional Scripts: Visualization
+
+This repository also includes the following R scripts, which are not part of the core survival analysis pipeline:
+
+* `graph_func.R`
+* `graph_Results.R`
+
+These scripts contain various helper functions used specifically for generating more advanced and customized visualizations of the final model results (e.g., C-Index and Hazard Ratio bar plots).
+
+If you are interested in the specific plotting functions used to create the figures in the notebooks, feel free to explore these files.
