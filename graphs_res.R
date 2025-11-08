@@ -1,4 +1,5 @@
-#
+
+#Figure 1
 
 FYN_MYL9_FLNB_CYTOiPaclitaxel_ALL_C_index
 FYN_MYL9_FLNB_BRCA_CIndex
@@ -6,146 +7,33 @@ TCF7L2_FYN_CYTOiPaclitaxel_ALL_C_index
 FYN_TCF7L2_CIndex
 
 
-plot_list_fig2 <- list(
+plot_list_fig1 <- list(
   FYN_MYL9_FLNB_CYTOiPaclitaxel_ALL_C_index, 
   FYN_MYL9_FLNB_BRCA_CIndex,
   TCF7L2_FYN_CYTOiPaclitaxel_ALL_C_index,
   FYN_TCF7L2_CIndex
 )
 
-titles_fig2 <- c(
+titles_fig1 <- c(
   'Paclitaxel Samples (C-Index: MYL9, FYN and FLNB)', 
   'Paclitaxel BRCA Samples (C-Index: MYL9, FYN and FLNB)', 
   'Paclitaxel Samples (C-Index: TCF7L2 and FYN)',
   'Paclitaxel BRCA Samples (C-Index: TCF7L2 and FYN)'  
 )
 
-Figure2 <- create_figure_2(
-  plot_list = plot_list_fig2,
-  list_of_titles = titles_fig2,
+Figure1 <- create_figure_2(
+  plot_list = plot_list_fig1,
+  list_of_titles = titles_fig1,
   ncol = 2,
   nrow = 2,
   labels = c("a", "b", "c", "d")
 )
 
-# print(Figure2) #  1368x768
+# print(Figure1) #  1368x768
 
-
-#Figure 3
-
-create_figure_3 <- function(
-    hr_plot,
-    cindex_plot,
-    main_title,
-    layout = "horizontal",
-    
- 
-    main_title_size = 9,
-    main_title_face = "bold",
-    
-   
-    hr_axis_title_y_size = 6,
-    hr_axis_title_y_face = 'bold',
-    hr_strip_text_size = 7,
-    hr_strip_text_face = 'bold',
-    hr_axis_text_x_size = 5,
-    hr_axis_text_y_size = 6,
-    hr_plot_margin = unit(c(-0.1, 0.1, 0.1, 0.1), "cm"),
-    hr_label_size = 1.8,
-    hr_label_vjust = -0.2,
-    
-  
-    cindex_axis_title_y_size = 7,
-    cindex_axis_title_y_face = 'bold',
-    cindex_axis_text_y_size = 6,
-    cindex_axis_text_x_size = 7,
-    cindex_strip_text_size = 8,
-    cindex_plot_margin = unit(c(-0.1, 0.1, 0.1, 0.1), "cm"),
-    cindex_bar_width = 0.5,
-    cindex_label_size = 2.4,
-    cindex_label_vjust = -0.2
-) {
-  
-
-  p_hr <- hr_plot
-  
-
-  p_hr$labels$title <- element_blank()
-  
-
-  p_hr$theme$axis.title.y$size <- hr_axis_title_y_size
-  p_hr$theme$axis.title.y$face <- hr_axis_title_y_face
-  p_hr$theme$axis.text.x$size <- hr_axis_text_x_size
-  p_hr$theme$axis.text.y$size <- hr_axis_text_y_size
-  p_hr$theme$plot.margin <- hr_plot_margin
-  
-  
-  if (!is.null(p_hr$theme$strip.text)) {
-    p_hr$theme$strip.text$size <- hr_strip_text_size
-    p_hr$theme$strip.text$face <- hr_strip_text_face
-  }
-  
- 
-  if (length(p_hr$layers) >= 2 && !is.null(p_hr$layers[[2]]$aes_params$size)) {
-    p_hr$layers[[2]]$aes_params$size <- hr_label_size
-  }
-  if (length(p_hr$layers) >= 2 && !is.null(p_hr$layers[[2]]$aes_params$vjust)) {
-    p_hr$layers[[2]]$aes_params$vjust <- hr_label_vjust
-  }
-
- 
-  p_cindex <- cindex_plot
-  
-
-  p_cindex$labels$title <- element_blank()
-  
-
-  p_cindex$theme$axis.title.y$size <- cindex_axis_title_y_size
-  p_cindex$theme$axis.title.y$face <- cindex_axis_title_y_face
-  p_cindex$theme$axis.text.y$size <- cindex_axis_text_y_size
-  p_cindex$theme$axis.text.x$size <- cindex_axis_text_x_size
-  p_cindex$theme$plot.margin <- cindex_plot_margin
-  
-
-  if (!is.null(p_cindex$theme$strip.text)) {
-    p_cindex$theme$strip.text$size <- cindex_strip_text_size
-  }
-  
-
-  if (length(p_cindex$layers) >= 1 && !is.null(p_cindex$layers[[1]]$geom_params$width)) {
-    p_cindex$layers[[1]]$geom_params$width <- cindex_bar_width
-  }
-  if (length(p_cindex$layers) >= 2 && !is.null(p_cindex$layers[[2]]$aes_params$size)) {
-    p_cindex$layers[[2]]$aes_params$size <- cindex_label_size
-  }
-  if (length(p_cindex$layers) >= 2 && !is.null(p_cindex$layers[[2]]$aes_params$vjust)) {
-    p_cindex$layers[[2]]$aes_params$vjust <- cindex_label_vjust
-  }
-  
-
-  title_grob <- textGrob(
-    main_title, 
-    gp = gpar(fontsize = main_title_size, fontface = main_title_face)
-  )
-  
-
-  
-
-  if (layout == "vertical") {
-
-    final_plot <- grid.arrange(p_hr, p_cindex, nrow = 2, top = title_grob)
-  } else {
-    final_plot <- grid.arrange(p_hr, p_cindex, ncol = 2, top = title_grob)
-  }
-  
-  return(final_plot)
-}
-
-
-#Figure 3
+#Figure 2
 LDHB_TCF_HR
 TCF7L2_LDHB_Paclitaxel_ALL_C_index
-
 
 
 Figure_3_LDHB_TCF <- create_figure_3(
@@ -262,7 +150,7 @@ Figure_4_FYN_CXCR4_TCF7L2_BRCA <- create_figure_3(
 
 # 1200X 1300 vertical
 #Figure3 
-Figure3 <- plot_grid(
+Figure2 <- plot_grid(
   Figure_3_LDHB_TCF,
   Figure_3_LDHB_TCF_BRCA,
   Figure_3_FYN_TCF, 
@@ -273,7 +161,7 @@ Figure3 <- plot_grid(
 )
 
 # 1000x600  vertical
-Figure4 <- plot_grid(
+Figure3 <- plot_grid(
   Figure_3_FYN_CXCR4,
   Figure_3_FYN_CXCR4_BRCA,
   ncol = 2,
@@ -283,7 +171,7 @@ Figure4 <- plot_grid(
 
 # 1000X 1100 horizontal
 #Figure3 
-Figure3_v2 <- plot_grid(
+Figure2_v2 <- plot_grid(
   Figure_3_LDHB_TCF,
   Figure_3_LDHB_TCF_BRCA,
   Figure_3_FYN_TCF, 
@@ -294,7 +182,7 @@ Figure3_v2 <- plot_grid(
 )
 
 # 1000x600  horizontal  ,new  1100X 1200
-Figure4_v2 <- plot_grid(
+Figure3_v2 <- plot_grid(
   Figure_3_FYN_CXCR4,
   Figure_3_FYN_CXCR4_BRCA,
   Figure_4_FYN_CXCR4_TCF7L2,
@@ -304,7 +192,7 @@ Figure4_v2 <- plot_grid(
   labels = c("a", "b",'c','d') 
 )
 
-#Figure 5 ----------------------
+#Figure 4 ----------------------
 
 all_km_plots <- list(
   MYL9_KM_ALL, 
@@ -334,7 +222,7 @@ pvals_list <- list(
 )
 
 # # 1180x 620
-Figure5 <- create_figure_5(
+Figure4 <- create_figure_5(
   km_plot_list = all_km_plots,
   ncol = 3,
   nrow = 2,
@@ -352,10 +240,10 @@ Figure5 <- create_figure_5(
   
 )
 
-#Figure 6 ----------------------
+#Figure 5 ----------------------
 
 
-all_km_plots_figure6 <- list(
+all_km_plots_figure5 <- list(
   CXCR4_KM_ALL, 
   CXCR4_CNA_KM_ALL, 
   CXCR4_KM_BRCA,
@@ -376,8 +264,8 @@ pvals_list <- list(
   NULL
 )
  # 720x 560
-Figure6 <- create_figure_5(
-  km_plot_list = all_km_plots_figure6,
+Figure5 <- create_figure_5(
+  km_plot_list = all_km_plots_figure5,
   ncol = 2,
   nrow = 2,
   labels = c("a",'b'), # A, B, C, D, E, F
@@ -393,9 +281,9 @@ Figure6 <- create_figure_5(
   
 )
 
-#-------Figure7----------
-# Figure 7----------------
-Figure7_Top_Row <- create_figure_7_top_row(
+#-------Figure6----------
+# Figure 6----------------
+Figure6_Top_Row <- create_figure_7_top_row(
   plot_A_raw = LYN_MYO1F_PINK1_TNFSF13B_PREX1_Cindex_ALL,
   plot_B_raw = LYN_MYO1F_PINK1_TNFSF13B_PREX1_BRCA_Cindex,
   title_A = "5-FU Samples (C-Index)",
@@ -421,8 +309,8 @@ Plot_D <- create_figure_7_bottom_plot(
 )
 
 #1400x 900
-Figure7_Final <- plot_grid(
-  Figure7_Top_Row, 
+Figure6_Final <- plot_grid(
+  Figure6_Top_Row, 
   plot_grid(Plot_C, Plot_D, ncol = 2, labels = c("C", "D")), 
   nrow = 2,
   ncol = 1,
@@ -431,9 +319,9 @@ Figure7_Final <- plot_grid(
   align = 'v'
 )
 
-#Figure8---------------------
+#Figure7---------------------
 
-all_km_plots_figure8 <- list(
+all_km_plots_figure7 <- list(
   CCND1_KM_ALL, 
   FOSL1_KM_ALL, 
   CTTN_KM_ALL,
@@ -462,8 +350,8 @@ pvals_list <- list(
 
 
 #  1180x 620
-Figure8 <- create_figure_5(
-  km_plot_list = all_km_plots_figure8,
+Figure7 <- create_figure_5(
+  km_plot_list = all_km_plots_figure7,
   ncol = 3,
   nrow = 2,
   labels = c("a",'b','c'), # A, B, C, D, E, F
@@ -480,9 +368,9 @@ Figure8 <- create_figure_5(
   
 )
 
-#----------Figure 9
+#----------Figure 8
 
-all_km_plots_figure9 <- list(
+all_km_plots_figure8 <- list(
   YAP1_KM_ALL, 
   ASAP2_KM_ALL, 
   YAP1_KM_STAD,
@@ -504,8 +392,8 @@ pvals_list <- list(
 )
 
  #   720x 560
-Figure9 <- create_figure_5(
-  km_plot_list = all_km_plots_figure9,
+Figure8 <- create_figure_5(
+  km_plot_list = all_km_plots_figure8,
   ncol = 2,
   nrow = 2,
   labels = c("a",'b'), # A, B, C, D, E, F
@@ -524,9 +412,9 @@ Figure9 <- create_figure_5(
 
 
 
-#-------------Figure 10 
+#-------------Figure 9 
 
-all_km_plots_figure10 <- list(
+all_km_plots_figure9 <- list(
   TNC_KM_ALL,
   TNC_KM_STAD
 )
@@ -542,8 +430,8 @@ pvals_list <- list(
  
 )
  #   780x 340
-Figure10 <- create_figure_5(
-  km_plot_list = all_km_plots_figure10,
+Figure9 <- create_figure_5(
+  km_plot_list = all_km_plots_figure9,
   ncol = 2,
   nrow = 1,
   labels = c("a"), # A, B, C, D, E, F
@@ -558,30 +446,30 @@ Figure10 <- create_figure_5(
   
 )
 
-#Figure 11-------------
+#Figure 10-------------
 
 MGST2_CDH1_BMP4_GPX8_ALL_Cindex
 MGST2_CDH1_BMP4_GPX8_PAAD_Cindex
 
-plot_list_fig11 <- list(
+plot_list_fig10 <- list(
   MGST2_CDH1_BMP4_GPX8_ALL_Cindex, 
   MGST2_CDH1_BMP4_GPX8_PAAD_Cindex
 )
-titles_fig11 <- c(
+titles_fig10 <- c(
   "Gemcitabine Samples (C-Index)",  
   "Gemcitabine PAAD Samples (C-Index)" 
 )
 # 4.#1000x600
-Figure11 <- create_figure_2(
-  plot_list = plot_list_fig11,
-  list_of_titles = titles_fig11,
+Figure10 <- create_figure_2(
+  plot_list = plot_list_fig10,
+  list_of_titles = titles_fig10,
   ncol = 1,
   nrow = 2,
   labels = c("A", "B")
 )
 
-#Figure 12---------
-all_km_plots_figure12 <- list(
+#Figure 11---------
+all_km_plots_figure11 <- list(
   BAMBI_KM_ALL, 
   BAMBI_CNA_KM_ALL, 
   BAMBI_PAAD_KM_ALL,
@@ -604,8 +492,8 @@ pvals_list <- list(
   'p = 0.01'
 )
  #  720x 560
-Figure12 <- create_figure_5(
-  km_plot_list = all_km_plots_figure12,
+Figure11 <- create_figure_5(
+  km_plot_list = all_km_plots_figure11,
   ncol = 2,
   nrow = 2,
   labels = c("a",'b'), # A, B, C, D, E, F
@@ -619,9 +507,9 @@ Figure12 <- create_figure_5(
   pval_size = 3
   
 )
-#-----Figure13
+#-----Figure12
 
-all_km_plots_figure13 <- list(
+all_km_plots_figure12 <- list(
   COL18A1_KM_ALL, 
   DLC1_KM_ALL,
   BLM_KM_ALL,
@@ -650,8 +538,8 @@ pvals_list <- list(
 )
 
  #  1180x 620
-Figure13 <- create_figure_5(
-  km_plot_list = all_km_plots_figure13,
+Figure12 <- create_figure_5(
+  km_plot_list = all_km_plots_figure12,
   ncol = 3,
   nrow = 2,
   labels = c("a",'b','c','d'), # A, B, C, D, E, F
